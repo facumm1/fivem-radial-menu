@@ -1,0 +1,137 @@
+:root {
+  --__reactRadialMenu__menu-bgColor: rgba(36, 16, 17, 0.9);
+  --__reactRadialMenu__separator-color: rgba(36, 16, 17, 0.9);
+  --__reactRadialMenu__item-color: #333;
+  --__reactRadialMenu__zIndex: 666;
+
+  --__reactRadialMenu__activeItem-color: #fff;
+  --__reactRadialMenu__activeItem-bgColor: rgba(255, 255, 255, 0.25);
+  --__reactRadialMenu__activeSubItem-bgColor: rgba(36, 16, 17, 0.45);
+
+  --__reactRadialMenu__arrow-color: #6f6e77;
+  --__reactRadialMenu__activeArrow-color: #fff;
+  --__reactRadialMenu__animation-delay: 300ms;
+}
+/* --------------------------------- Themes --------------------------------- */
+.__rrm-light {
+  --__reactRadialMenu__menu-bgColor: #fff;
+  --__reactRadialMenu__separator-color: rgba(0, 0, 0, 0.2);
+  --__reactRadialMenu__item-color: #333;
+}
+.__rrm-dark {
+  --__reactRadialMenu__menu-bgColor: rgba(40, 40, 40, 0.98);
+  --__reactRadialMenu__separator-color: #4c4c4c;
+  --__reactRadialMenu__item-color: #fff;
+}
+/* ------------------------------- Animations --------------------------------*/
+.__rrm-menu.__rrm-closing.__rrm-fade,
+.__rrm-menu.__rrm-opening.__rrm-fade {
+  opacity: 0;
+}
+.__rrm-menu.__rrm-opened.__rrm-fade {
+  opacity: 1;
+}
+
+.__rrm-menu.__rrm-closing.__rrm-scale,
+.__rrm-menu.__rrm-opening.__rrm-scale {
+  scale: 0;
+}
+.__rrm-menu.__rrm-opened.__rrm-scale {
+  scale: 1;
+}
+
+.__rrm-menu.__rrm-closing.__rrm-rotate,
+.__rrm-menu.__rrm-opening.__rrm-rotate {
+  rotate: -45deg;
+}
+.__rrm-menu.__rrm-opened.__rrm-rotate {
+  rotate: 0deg;
+}
+/* ---------------------------------- Menu ---------------------------------- */
+.__rrm-menu {
+  position: absolute;
+  z-index: var(--__reactRadialMenu__zIndex);
+  transition: all var(--__reactRadialMenu__animation-delay) ease;
+  transform-origin: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+.__rrm-menu g {
+  cursor: pointer;
+}
+/* ---------------------------------- Base ---------------------------------- */
+.__rrm-base {
+  transition: all var(--__reactRadialMenu__animation-delay) ease;
+  fill: var(--__reactRadialMenu__menu-bgColor);
+  stroke: var(--__reactRadialMenu__separator-color);
+}
+
+.__rrm-subbase {
+  transition: all var(--__reactRadialMenu__animation-delay) ease;
+  fill: var(--__reactRadialMenu__menu-bgColor);
+  stroke: var(--__reactRadialMenu__separator-color);
+}
+
+.__rrm-base.__rrm-active {
+  fill: var(--__reactRadialMenu__activeItem-bgColor);
+}
+.__rrm-subbase.__rrm-active {
+  filter: url(#white-glow)
+}
+/* --------------------------------- Content -------------------------------- */
+.__rrm-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  pointer-events: none;
+  color: var(--__reactRadialMenu__item-color);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.__rrm-content.__rrm-active {
+  color: var(--__reactRadialMenu__activeItem-color);
+}
+/* ---------------------------------- Arrow --------------------------------- */
+.__rrm-arrow {
+  stroke: var(--__reactRadialMenu__arrow-color);
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+.__rrm-arrow.__rrm-active {
+  stroke: var(--__reactRadialMenu__activeArrow-color);
+}
+/* --------------------------------- Return --------------------------------- */
+.__rrm-return {
+  stroke: var(--__reactRadialMenu__arrow-color);
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4px;
+}
+.__rrm-return.__rrm-active {
+  stroke: var(--__reactRadialMenu__activeArrow-color);
+}
+/* --------------------------------- No Bg --------------------------------- */
+.__rrm-no-bg > g > foreignObject {
+  border: 1px solid var(--__reactRadialMenu__separator-color);
+  border-radius: 50%;
+  background-color: var(--__reactRadialMenu__menu-bgColor);
+}
+.__rrm-no-bg > g > foreignObject:has(.__rrm-active) {
+  background-color: var(--__reactRadialMenu__activeItem-bgColor);
+}
+.__rrm-no-bg .__rrm-arrow {
+  stroke: var(--__reactRadialMenu__arrow-color);
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+.__rrm-no-bg .__rrm-arrow.__rrm-active {
+  stroke: var(--__reactRadialMenu__arrow-color);
+}
